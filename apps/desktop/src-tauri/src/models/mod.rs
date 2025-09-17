@@ -15,8 +15,10 @@ pub struct Provider {
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(rename_all = "snake_case")]
 pub enum ProviderType {
+    #[serde(rename = "openai")]
     OpenAI,
     Anthropic,
+    #[serde(rename = "openrouter")]
     OpenRouter,
 }
 
