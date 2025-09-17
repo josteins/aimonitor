@@ -1,0 +1,27 @@
+name = "aimonitor-poller"
+main = "src/index.ts"
+compatibility_date = "2024-09-17"
+
+[env.production]
+workers_dev = false
+route = { pattern = "api.aimonitor.app/*", zone_id = "" }
+
+[[kv_namespaces]]
+binding = "KV"
+id = "your-kv-namespace-id"
+
+[[kv_namespaces]]
+binding = "SECRETS"
+id = "your-secrets-namespace-id"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "aimonitor"
+database_id = "your-d1-database-id"
+
+[triggers]
+crons = ["*/5 * * * *"]
+
+[vars]
+JWT_SECRET = "your-jwt-secret"
+PUSH_KEY = "your-fcm-server-key"
