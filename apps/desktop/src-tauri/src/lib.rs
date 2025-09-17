@@ -1,7 +1,6 @@
 mod models;
 
 use serde::{Deserialize, Serialize};
-use tauri::Manager;
 
 #[derive(Serialize, Deserialize)]
 struct AddProviderRequest {
@@ -48,7 +47,7 @@ async fn toggle_provider(provider_id: String, enabled: bool) -> Result<(), Strin
 pub fn run() {
     tauri::Builder::default()
         .plugin(tauri_plugin_opener::init())
-        .setup(|app| {
+        .setup(|_app| {
             // Initialize app state here
             Ok(())
         })
